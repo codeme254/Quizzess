@@ -1,0 +1,762 @@
+<!DOCTYPE html> 
+
+
+<html lang="en"> 
+
+<head> 
+
+<meta charset="UTF-8"> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<title>Document</title> 
+
+</head> 
+
+<style> 
+
+*{ 
+
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+
+text-align: center; 
+
+text-transform: capitalize; 
+
+} 
+
+#main-container{ 
+
+/*height: 100vh;*/ 
+
+height: fit-content; 
+
+border: 2px solid green; 
+
+display:grid; 
+
+grid-template-areas: 
+
+"n n n" 
+
+"p p t1" 
+
+"p p t2" 
+
+"p p t3" 
+
+"c s t4" 
+
+"w w t5" 
+
+; 
+
+grid-row-gap:6px; 
+
+grid-column-gap:6px; 
+
+} 
+
+#qno{ 
+
+grid-area: n; 
+
+border:2px solid red; 
+
+} 
+
+#q-screen{ 
+
+grid-area:p; 
+
+
+
+} 
+
+#q1flag{ 
+
+grid-area: t1; 
+
+background: red; 
+
+} 
+
+#q2flag{ 
+
+grid-area:t2; 
+
+background: greenyellow; 
+
+} 
+
+#q3flag{ 
+
+grid-area:t3; 
+
+background: red; 
+
+} 
+
+#q4flag{ 
+
+grid-area:t4; 
+
+background: greenyellow; 
+
+} 
+
+#q5flag{ 
+
+grid-area:t5; 
+
+background: red; 
+
+} 
+
+#current-score{ 
+
+grid-area:c; 
+
+background: greenyellow; 
+
+} 
+
+#total-score{ 
+
+grid-area:s; 
+
+background: red; 
+
+} 
+
+#wheel{ 
+
+grid-area:w; 
+
+background: greenyellow; 
+
+} 
+
+#q1{ 
+
+visibility: hidden; 
+
+} 
+
+#q2{ 
+
+visibility: hidden; 
+
+} 
+
+#q3{ 
+
+visibility: hidden; 
+
+} 
+
+#q4{ 
+
+visibility: hidden; 
+
+} 
+
+#q5{ 
+
+visibility: hidden; 
+
+} 
+
+button{ 
+
+width:30%; 
+
+height: 40px; 
+
+} 
+
+@media (max-width:900px){ 
+
+#main-container{ 
+
+/*height: 100vh;*/ 
+
+display:flex; 
+
+flex-direction: column; 
+
+} 
+
+} 
+
+</style> 
+
+<script> 
+
+var score=0; 
+
+//console.log(typeof(score)); 
+
+function start(){ 
+
+var quiz1=document.getElementById("q1").innerHTML; 
+
+document.getElementById("starting-message").innerHTML=quiz1; 
+
+var startingButton=document.getElementById("b1"); 
+
+startingButton.style.visibility="hidden"; 
+
+} 
+
+function question1check(){ 
+
+var q1a=document.getElementById("mary"); 
+
+var q1b=document.getElementById("miriam"); 
+
+var button3=document.getElementById("button3").innerHTML; 
+
+if (q1a.checked==true){ 
+
+document.getElementById("f1-text").style.visibility="visible"; 
+
+document.getElementById("button3").style.visibility="visible"; 
+
+document.getElementById("button2").style.visibility="hidden"; 
+
+document.getElementById("q1f").innerHTML="question 1 passed"; 
+
+score=score+1; 
+
+document.getElementById("q1s").innerHTML=score; 
+
+var q1m=0; 
+
+q1m=q1m+1; 
+
+document.getElementById("q1m").innerHTML=q1m; 
+
+} 
+
+else if(q1b.checked==true){ 
+
+var message1= document.getElementById("f1-text") 
+
+message1.innerText="you failed this question"; 
+
+message1.style.visibility="visible"; 
+
+document.getElementById("button3").style.visibility="visible"; 
+
+document.getElementById("button2").style.visibility="hidden"; 
+
+document.getElementById("q1f").innerHTML="question 1 failed"; 
+
+score=score+0; 
+
+} 
+
+else{ 
+
+alert("YOU HAVE NOT ANSWERED THIS QUESTION"); 
+
+} 
+
+} 
+
+function question2(){ 
+
+var quiz2=document.getElementById("q2").innerHTML; 
+
+document.getElementById("starting-message").innerHTML=quiz2; 
+
+} 
+
+function question2view(){ 
+
+var q2a=document.getElementById("bethlehem"); 
+
+var q2b=document.getElementById("nazareth"); 
+
+if(q2a.checked==true){ 
+
+document.getElementById("f2-text").style.visibility="visible"; 
+
+document.getElementById("button5").style.visibility="hidden"; 
+
+document.getElementById("button6").style.visibility="visible"; 
+
+document.getElementById("q2f").innerHTML="question 2 passed"; 
+
+score=score+1; 
+
+document.getElementById("q2s").innerHTML=score; 
+
+var q2m=0; 
+
+q2m=q2m+1; 
+
+document.getElementById("q2m").innerHTML=q2m; 
+
+} 
+
+else if(q2b.checked==true){ 
+
+var message2=document.getElementById("f2-text"); 
+
+message2.innerHTML="you failed this question"; 
+
+message2.style.visibility="visible"; 
+
+document.getElementById("button5").style.visibility="hidden"; 
+
+document.getElementById("button6").style.visibility="visible"; 
+
+document.getElementById("q2f").innerHTML="question 2 failed"; 
+
+score=score+0; 
+
+} 
+
+else{ 
+
+alert("YOU HAVE NOT ANSWERED THIS QUESTION"); 
+
+} 
+
+} 
+
+function question3(){ 
+
+var quiz3=document.getElementById("q3").innerHTML; 
+
+document.getElementById("starting-message").innerHTML=quiz3; 
+
+} 
+
+function question3view(){ 
+
+var q3a=document.getElementById("farmer"); 
+
+var q3b=document.getElementById("carpenter"); 
+
+if(q3a.checked==true){ 
+
+var message3=document.getElementById("f3-text"); 
+
+message3.innerHTML="you failed this question"; 
+
+message3.style.visibility="visible"; 
+
+document.getElementById("button7").style.visibility="hidden"; 
+
+document.getElementById("button8").style.visibility="visible"; 
+
+document.getElementById("q3f").innerHTML="question 3 failed"; 
+
+score=score+0; 
+
+} 
+
+else if(q3b.checked==true){ 
+
+document.getElementById("f3-text").style.visibility="visible"; 
+
+document.getElementById("button7").style.visibility="hidden"; 
+
+document.getElementById("button8").style.visibility="visible"; 
+
+document.getElementById("q3f").innerHTML="question 3 passed"; 
+
+score=score+1; 
+
+document.getElementById("q3s").innerHTML=score; 
+
+var q3m=0; 
+
+q3m=q3m+1; 
+
+document.getElementById("q3m").innerHTML=q3m; 
+
+} 
+
+else{ 
+
+alert("YOU HAVE NOT ANSWERED THIS QUESTION"); 
+
+} 
+
+} 
+
+function question4(){ 
+
+var quiz4=document.getElementById("q4").innerHTML; 
+
+document.getElementById("starting-message").innerHTML=quiz4; 
+
+} 
+
+function question4view(){ 
+
+var q4a=document.getElementById("john"); 
+
+var q4b=document.getElementById("joseph"); 
+
+if(q4a.checked==true){ 
+
+var message4=document.getElementById("f4-text"); 
+
+message4.innerHTML="you have failed this question"; 
+
+message4.style.visibility="visible"; 
+
+document.getElementById("button9").style.visibility="hidden"; 
+
+document.getElementById("button10").style.visibility="visible"; 
+
+document.getElementById("q4f").innerHTML="question 4 failed"; 
+
+score=score+0; 
+
+} 
+
+else if(q4b.checked==true){ 
+
+document.getElementById("f4-text").style.visibility="visible"; 
+
+document.getElementById("button9").style.visibility="hidden"; 
+
+document.getElementById("button10").style.visibility="visible"; 
+
+document.getElementById("q4f").innerHTML="question 4 passed"; 
+
+score=score+1; 
+
+document.getElementById("q4s").innerHTML=score; 
+
+var q4m=0; 
+
+q4m=q4m+1; 
+
+document.getElementById("q4m").innerHTML=q4m; 
+
+} 
+
+else{ 
+
+alert("YOU HAVE NOT ANSWERED THIS QUESTION"); 
+
+} 
+
+} 
+
+function question5(){ 
+
+var quiz5=document.getElementById("q5").innerHTML; 
+
+document.getElementById("starting-message").innerHTML=quiz5; 
+
+} 
+
+function question5view(){ 
+
+var q5a=document.getElementById("12"); 
+
+var q5b=document.getElementById("11"); 
+
+if(q5a.checked==true){ 
+
+document.getElementById("f5-text").style.visibility="visible"; 
+
+document.getElementById("button11").style.visibility="hidden"; 
+
+document.getElementById("button12").style.visibility="visible"; 
+
+document.getElementById("q5f").innerHTML="question 5 passed"; 
+
+score=score+1; 
+
+document.getElementById("q5s").innerHTML=score; 
+
+var q5m=0; 
+
+q5m=q5m+1; 
+
+document.getElementById("q5m").innerHTML=q5m; 
+
+} 
+
+else if(q5b.checked==true){ 
+
+var message5=document.getElementById("f5-text"); 
+
+message5.innerHTML="you have failed this question"; 
+
+message5.style.visibility="visible"; 
+
+document.getElementById("button11").style.visibility="hidden"; 
+
+document.getElementById("button12").style.visibility="visible"; 
+
+document.getElementById("q5f").innerHTML="question 5 failed"; 
+
+score=score+0; 
+
+} 
+
+else{ 
+
+alert("YOU HAVE NOT ANSWERED THIS QUESTION"); 
+
+} 
+
+} 
+
+function finish(){ 
+
+document.getElementById("total").innerHTML=score; 
+
+switch (score){ 
+
+case 1: 
+
+document.getElementById("remark").innerHTML="not so good"; 
+
+document.getElementById("wheel").style.background.repeat="(red, green)" 
+
+break; 
+
+case 2: 
+
+document.getElementById("remark").innerHTML="good"; 
+
+break; 
+
+case 3: 
+
+document.getElementById("remark").innerHTML="better"; 
+
+break; 
+
+case 4: 
+
+document.getElementById("remark").innerHTML="best"; 
+
+break; 
+
+case 5: 
+
+document.getElementById("remark").innerHTML="excellent, you are a genious"; 
+
+break; 
+
+default: 
+
+document.getElementById("remark").innerHTML="not yet answered"; 
+
+} 
+
+} 
+
+
+
+</script> 
+
+<body> 
+
+<h1>quiz app</h1> 
+
+<div id="main-container"> 
+
+<div id="qno"> 
+
+<h4>QUESTION NUMBERS WILL BE SEEN HERE</h4> 
+
+<button onclick="start()" id="b1">START ATTEMPT</button> 
+
+</div> 
+
+<div id="q-screen"> 
+
+<div id="starting-message"> 
+
+<h1 id="mjk">Let us do some quiz</h1> 
+
+</div> 
+
+</div> 
+
+<div id="q1flag"> 
+
+<p id="q1f">Not yet attempted</p> 
+
+<p>question 1 awarded=<span id="q1m">0</span></p> 
+
+<p>total current score= <span id="q1s">0</span></p> 
+
+</div> 
+
+<div id="q2flag"> 
+
+<p id="q2f">Not yet attempted</p> 
+
+<p>question 2 awarded=<span id="q2m">0</span></p> 
+
+<p>total current score= <span id="q2s">0</span></p> 
+
+</div> 
+
+<div id="q3flag"> 
+
+<p id="q3f">Not yet attempted</p> 
+
+<p>question 3 awarded=<span id="q3m">0</span></p> 
+
+<p>total current score= <span id="q3s">0</span></p> 
+
+</div> 
+
+<div id="q4flag"> 
+
+<p id="q4f">Not yet attempted</p> 
+
+<p>question 4 awarded=<span id="q4m">0</span></p> 
+
+<p>total current score= <span id="q4s">0</span></p> 
+
+</div> 
+
+<div id="q5flag"> 
+
+<p id="q5f">Not yet attempted</p> 
+
+<p>question 5 awarded=<span id="q5m">0</span></p> 
+
+<p>total current score= <span id="q5s">0</span></p> 
+
+</div> 
+
+<div id="current-score"> 
+
+<P>YOU HAVE SCORED <span id="total">0</span></P> 
+
+</div> 
+
+<div id="total-score"> 
+
+<p id="remark">Remark</p> 
+
+</div> 
+
+<div id="wheel"></div> 
+
+</div> 
+
+<div id=q1> 
+
+<p>who was the mother of jesus</p> 
+
+<label for="mary">Mary</label> 
+
+<input type="radio" id="mary" name="q1"> 
+
+<label for="miriam">Miriam</label> 
+
+<input type="radio" id="miriam" name="q1"><br><br> 
+
+<button onclick="question1check()" id="button2">VIEW FLAG</button> 
+
+<p id="f1-text" style="visibility: hidden;">you passed this question</p> 
+
+<button onclick="question2()" id="button3" style="visibility:hidden">NEXT QUESTION</button> 
+
+
+
+</div> 
+
+
+
+<div id="q2"> 
+
+<p>Jesus was born in?</p> 
+
+<label for="bethlehem">Bethlehem</label> 
+
+<input type="radio" id="bethlehem" name="q2"> 
+
+<label for="nazareth">Nazareth</label> 
+
+<input type="radio" id="nazareth" name="q2"><br><br> 
+
+<button onclick="question2view()" id="button5">VIEW FLAG</button> 
+
+<p id="f2-text" style="visibility: hidden;">you passed this question</p> 
+
+<button onclick="question3()" id="button6" style="visibility: hidden;">NEXT QUESTION</button> 
+
+</div> 
+
+<div id="q3"> 
+
+<p>The father of Jesus was a? (what work did he do)</p> 
+
+<label for="farmer">Farmer</label> 
+
+<input type="radio" id="farmer" name="q3"> 
+
+<label for="carpenter">Carpenter</label> 
+
+<input type="radio" id="carpenter" name="q3"><br><br> 
+
+<button onclick="question3view()" id="button7">VIEW FLAG</button> 
+
+<p id="f3-text" style="visibility: hidden;">You have passed this question</p> 
+
+<button onclick="question4()" id="button8" style="visibility: hidden;">NEXT QUESTION</button> 
+
+</div> 
+
+<div id="q4"> 
+
+<p>What was the name of the father of Jesus?</p> 
+
+<label for="john">John</label> 
+
+<input type="radio" id="john" name="q4"> 
+
+<label for="joseph">Joseph</label> 
+
+<input type="radio" id="joseph" name="q4"><br><br> 
+
+<button onclick="question4view()" id="button9">VIEW FLAG</button> 
+
+<p id="f4-text" style="visibility: hidden;">You passed this question</p> 
+
+<button onclick="question5()" id="button10" style="visibility: hidden;">NEXT QUESTION</button> 
+
+</div> 
+
+<div id="q5"> 
+
+<p>How many disciples did Jesus have?</p> 
+
+<label for="12">12</label> 
+
+<input type="radio" id="12" name="q5"> 
+
+<label for="11">11</label> 
+
+<input type="radio" id="11" name="q5"><br><br> 
+
+<button onclick="question5view()" id="button11">VIEW FLAG</button> 
+
+<p id="f5-text" style="visibility: hidden;">you passed this question</p> 
+
+<button onclick="finish()" id="button12" style="visibility: hidden;">FINISH QUIZ</button> 
+
+</div> 
+
+</body> 
+
+</html>
